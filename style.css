@@ -1,0 +1,182 @@
+/* 1. 기본 설정 (여백 없애기) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* 테두리 포함 크기 계산 */
+}
+
+body {
+    font-family: '맑은 고딕', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* 공통: 내용을 가운데로 모아주는 틀 */
+.container {
+    width: 90%;
+    /* 화면의 90%만 씀 */
+    max-width: 1000px;
+    /* 너무 넓어지지 않게 최대폭 제한 */
+    margin: 0 auto;
+    /* 가운데 정렬 */
+}
+
+/* 2. 헤더 디자인 */
+.header {
+    background-color: #222;
+    /* 검은색 배경 */
+    color: white;
+    padding: 20px 0;
+}
+
+/* 헤더 안의 내용을 가로로 배치 (로고 - 메뉴) */
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    /* 양 끝으로 벌리기 */
+    align-items: center;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    /* 밑줄 제거 */
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+/* 3. 메인 - 프로필 박스 */
+.profile-box {
+    display: flex;
+    /* 글과 사진을 가로로 */
+    align-items: center;
+    /* 세로 중앙 정렬 */
+    padding: 60px 0;
+    border-bottom: 1px solid #ddd;
+    /* 밑줄 긋기 */
+}
+
+.text-area {
+    flex: 1;
+    /* 공간을 1만큼 차지 (반반) */
+}
+
+.image-area {
+    flex: 1;
+    /* 공간을 1만큼 차지 (반반) */
+    text-align: center;
+    /* 사진 가운데 정렬 */
+}
+
+.image-area img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    /* 동그라미로 만들기 */
+    object-fit: cover;
+}
+
+/* 4. 메인 - 경력 박스 */
+.experience-box {
+    padding: 60px 0;
+}
+
+.card {
+    background-color: #f9f9f9;
+    /* 연한 회색 배경 */
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    /* 모서리 둥글게 */
+}
+
+.card h4 {
+    color: #0056b3;
+    /* 파란색 강조 */
+    margin-bottom: 5px;
+}
+
+ul {
+    padding-left: 20px;
+    /* 리스트 점 안쪽으로 */
+}
+
+/* 5. 메인 - 프로젝트 박스 (새로 추가됨) */
+.project-box {
+    padding: 60px 0;
+    border-top: 1px solid #ddd;
+    /* 경력 섹션과의 구분선 */
+}
+
+/* 3열 그리드 레이아웃 설정 */
+.project-grid {
+    display: grid;
+    /* 1fr을 3번 반복 = 화면을 3등분 */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    /* 카드 사이 간격 */
+    margin-top: 20px;
+}
+
+/* 개별 프로젝트 카드 디자인 */
+.project-card {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    /* 이미지가 둥근 모서리를 넘어가지 않게 자름 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    /* 살짝 그림자 */
+    transition: transform 0.3s ease;
+    /* 마우스 올렸을 때 부드럽게 움직임 */
+}
+
+/* 마우스 올렸을 때 효과 */
+.project-card:hover {
+    transform: translateY(-5px);
+    /* 위로 살짝 올라감 */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* 프로젝트 이미지 영역 */
+.project-img img {
+    width: 100%;
+    height: 200px;
+    /* 높이 고정 (이미지 크기가 달라도 카드 크기 맞춤) */
+    object-fit: cover;
+    /* 비율 유지하며 꽉 채우기 */
+    display: block;
+}
+
+/* 프로젝트 텍스트 영역 */
+.project-info {
+    padding: 20px;
+}
+
+.project-info h4 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.project-info .date {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.project-info .desc {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* 6. 푸터 디자인 */
+.footer {
+    background-color: #333;
+    color: #ccc;
+    text-align: center;
+    padding: 30px 0;
+
+}
