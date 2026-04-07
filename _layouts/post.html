@@ -1,0 +1,46 @@
+---
+layout: default
+---
+
+<article class="post-single">
+  <!-- Post Header -->
+  <header class="post-header">
+    <div class="container">
+      <div class="post-categories">
+        {% for category in page.categories %}
+        <span class="category-badge">{{ category }}</span>
+        {% endfor %}
+      </div>
+      <h1 class="post-title">{{ page.title }}</h1>
+      <div class="post-meta">
+        <time datetime="{{ page.date | date_to_xmlschema }}">
+          {{ page.date | date: "%Y.%m.%d" }}
+        </time>
+        <span class="post-dot">·</span>
+        <span class="post-read-time">{{ content | strip_html | number_of_words | divided_by: 180 | plus: 1 }} min read</span>
+      </div>
+      {% if page.tags %}
+      <div class="post-tags">
+        {% for tag in page.tags %}
+        <span class="tag">#{{ tag }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </header>
+
+  <!-- Post Body -->
+  <div class="post-body">
+    <div class="container">
+      {% if page.thumbnail %}
+      <div class="post-thumbnail">
+        <img src="{{ page.thumbnail | relative_url }}" alt="{{ page.title }}">
+      </div>
+      {% endif %}
+      
+      <div class="post-content">
+        {{ content }}
+      </div>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,74 @@
+- title: "Linux-Audio-System"
+  period: "2024.12 - 2025.03"
+  description: "Improving ALSA-based 1:1 playback environments with Pipewire to support multi-stream audio servers."
+  tags: ["C++", "Audio", "Linux"]
+  image: "/assets/images/projects/audio.jpg"
+  github: "https://github.com/song-dela-moon/Linux-Audio-System"
+  featured: true
+
+- title: "Rust-TPM"
+  period: "2025.01 - 2025.04"
+  description: "A fast SSD encryption and integrity verification system using Rust and TPM 2.0 hardware."
+  tags: ["Rust", "Security", "TPM"]
+  image: "/assets/images/projects/tpm.jpg"
+  github: "https://github.com/song-dela-moon/Rust-TPM"
+  featured: true
+
+- title: "Simple-zRAM"
+  period: "2024.09 - 2024.12"
+  description: "Automation and optimization tool for Linux zRAM to efficiently manage available memory."
+  tags: ["Rust", "Linux", "Kernel"]
+  image: "/assets/images/projects/zram.jpg"
+  github: "https://github.com/song-dela-moon/Simple-zRAM"
+  featured: true
+
+- title: "PNG_Compressor"
+  period: "2023.05 - 2023.08"
+  description: "A high-performance PNG compression tool implemented in C with system-level optimizations."
+  tags: ["C", "Optimization", "System"]
+  image: "/assets/images/projects/png.jpg"
+  github: "https://github.com/song-dela-moon/PNG_Compressor"
+
+- title: "2024_Spring_ANN"
+  period: "2024.03 - 2024.06"
+  description: "Implementation of Artificial Neural Networks from scratch, focusing on backpropagation and activation functions."
+  tags: ["Python", "AI", "Math"]
+  image: "/assets/images/projects/ann.jpg"
+  github: "https://github.com/song-dela-moon/2024_Spring_ANN"
+
+- title: "2023_Fall_ML"
+  period: "2023.09 - 2023.12"
+  description: "A collection of core Machine Learning algorithms implemented manually to understand underlying principles."
+  tags: ["Python", "Machine Learning", "AI"]
+  image: "/assets/images/projects/ml.jpg"
+  github: "https://github.com/song-dela-moon/2023_Fall_ML"
+
+- title: "KosmOS"
+  period: "2023.01 - 2023.06"
+  description: "A small x86 operating system kernel developed from scratch to explore OS fundamentals."
+  tags: ["C", "x86", "Kernel"]
+  image: "/assets/images/projects/os.jpg"
+  github: "https://github.com/song-dela-moon/KosmOS"
+  featured: true
+
+- title: "Robot-RT-Monitoring-Dashboard"
+  period: "2024.06 - 2024.09"
+  description: "Real-time monitoring dashboard for robots using WebFlux and reactive streams for high throughput."
+  tags: ["Java", "WebFlux", "Robot"]
+  image: "/assets/images/projects/robot.jpg"
+  github: "https://github.com/song-dela-moon/Robot-RT-Monitoring-Dashboard"
+
+- title: "C_Compiler_Front"
+  period: "2022.09 - 2022.12"
+  description: "A compiler front-end for a C-like language involving lexical analysis, parsing, and AST generation."
+  tags: ["C", "Flex", "Yacc"]
+  image: "/assets/images/projects/compiler.jpg"
+  github: "https://github.com/song-dela-moon/C_Compiler_Front"
+  featured: true
+
+- title: "woori-payflow"
+  period: "2022.03 - 2022.06"
+  description: "A scalable payment system backend designed for reliability and high concurrency."
+  tags: ["Java", "Spring", "Backend"]
+  image: "/assets/images/projects/payflow.jpg"
+  github: "https://github.com/song-dela-moon/woori-payflow"

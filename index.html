@@ -1,134 +1,145 @@
-<!DOCTYPE html>
-<html lang="ko">
+---
+layout: default
+title: "JunKyu Song - System Programmer"
+description: "Rust, Linux, Kubernetes 전문 시스템 프로그래머 송준규의 포트폴리오입니다."
+---
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JunKyu Song</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-
-    <div class="header">
-        <div class="container">
-            <div class="logo">JunKyu Song</div>
-            <div class="menu">
-                <a href="#about">About</a>
-                <a href="#exp">Experience</a>
-                <a href="#project">Projects</a>
+<!-- Hero Section -->
+<section class="hero" id="about">
+  <div class="container">
+    <div class="hero-inner">
+      <!-- Column 1: Profile Side (60% or 3/5) -->
+      <div class="hero-column hero-profile-column" style="flex: 3;">
+        <div class="hero-profile-flex">
+          <div class="hero-profile-side-photo">
+            <div class="profile-large-wrapper">
+              <img src="{{ '/images/profile.jpg' | relative_url }}" alt="JunKyu Song" id="profile-img">
             </div>
+          </div>
+
+          <div class="hero-profile-side-text">
+            <div class="hero-badge">
+              <span class="hero-badge-dot"></span>
+              Available for opportunities
+            </div>
+            <h1 class="hero-name">송준규</h1>
+            <p class="hero-name-en mono">$ whoami <span style="color:var(--primary-light)">JunKyu Song</span></p>
+
+            <p class="hero-desc">
+              <strong style="color:var(--text-primary)">Edge부터 Cloud까지,</strong><br>
+              다양한 프로젝트 경험을 바탕으로 폭넓게 사고하는<br>
+              제너럴리스트 <strong style="color:var(--primary-light)">백엔드 개발자</strong> 송준규입니다.
+            </p>
+
+            <div class="hero-cta">
+              <a href="{{ '/blog/' | relative_url }}" class="btn btn-primary" id="cta-blog">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
+                </svg>
+                블로그 보기
+              </a>
+              <a href="https://github.com/{{ site.github_username }}" class="btn btn-outline" target="_blank"
+                rel="noopener" id="cta-github">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                </svg>
+                GitHub
+              </a>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- Column 2: Graph (40% or 2/5) -->
+      <div class="hero-column hero-graph-column" style="flex: 2;">
+        {% include graph-view.html %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Experience Section -->
+<section class="section" id="exp">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">// experience</span>
+      <h2 class="section-title">경력</h2>
     </div>
 
-    <div class="main">
-        <div class="container profile-box" id="about">
-            <div class="text-area">
-                <h3>About</h3>
-                <h1>송준규 (JunKyu Song)</h1>
-                <p>
-                    다양한 나라의 개발자들과 소통하는 것을 좋아하고,<br>
-                    밑바닥부터 파고드는 것을 즐기는 개발자 송준규입니다.
-                </p>
-                <p class="skills">
-                    <strong>Skills</strong> C/C++, Rust, Linux, Docker, Kubernetes
-                </p>
-            </div>
-            <div class="image-area">
-                <img src="images/profile.jpg" alt="profile 사진">
-            </div>
+    <div class="experience-list">
+      {% for exp in site.data.experience %}
+      <div class="experience-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-company">{{ exp.company }}</div>
+            <div class="exp-role">{{ exp.role }}</div>
+          </div>
+          <span class="exp-period mono">{{ exp.period }}</span>
         </div>
-
-        <div class="container experience-box" id="exp">
-            <h3>Experience</h3>
-            <div class="card">
-                <h4>Bear Robotics</h4>
-                <p><strong>System Programmer Intern</strong></p>
-                <p class="date">2024.09 - 2025.08</p>
-                <ul>
-                    <li><strong>Memory 최적화:</strong> zRAM을 적용하여 로봇 최대 주행 가능 맵 크기를 4배 넓혔습니다.</li>
-                    <li><strong>Pipewire 도입:</strong> ALSA 기반 1:1 재생 환경에서, 다중 재생이 되도록 구현했습니다.</li>
-                    <li><strong>SSD 암호화:</strong> Rust와 TPM을 사용하여 SSD 암호화 기능을 기존 대비 3배 빠르게 구현했습니다.</li>
-                    <li><strong>OS OTA update:</strong> OSTree와 Overlay FS를 이용해 OTA OS 버전 관리를 지원했습니다.</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h4>Lawdians</h4>
-                <p><strong>Infrastructure Engineer Intern</strong></p>
-                <p class="date">2021.07 - 2021.12</p>
-                <ul>
-                    <li><strong>Infra 관리:</strong> Kubernetes, Docker, Jenkins를 활용한 Pipeline 운영 및 구축을 맡았습니다.</li>
-                    <li><strong>ISMS-P 심사 지원</strong> Docker 및 Linux 환경 세팅을 통해 setting으로 인한 취약점을 보완했습니다.</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h4>선린인터넷고등학교</h4>
-                <p><strong>Contract Teacher</strong></p>
-                <p class="date">2020.08 - 2023.08</p>
-                <ul>
-                    <li><strong>강의 진행:</strong> 6번의 방학동안 Packet tracer와 GNS를 활용한 인프라 구축 강의를 진행했습니다.</li>
-                    <li><strong>대회 출제:</strong> 네트워크 구축 대회 및 서버 구축 대회 문제를 출제했습니다.</li>
-                </ul>
-            </div>
+        <div class="exp-highlights">
+          {% for h in exp.highlights %}
+          <div class="exp-highlight">
+            <span class="exp-highlight-title">
+              {% if h.link %}
+              <a href="{{ h.link }}" target="_blank" rel="noopener"
+                style="color: var(--text-primary); text-decoration: underline; text-underline-offset: 4px;">{{ h.title
+                }}</a>
+              {% else %}
+              {{ h.title }}
+              {% endif %}
+            </span>
+            <span>{{ h.desc }}</span>
+          </div>
+          {% endfor %}
         </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 
-        <div class="container project-box" id="project">
-            <h3>Projects</h3>
-            <div class="project-grid">
-
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="images/project.jpg" alt="Project Image 1">
-                    </div>
-                    <div class="project-info">
-                        <h4>Project 1 제목</h4>
-                        <p class="date">2021.01 - 2021.02</p>
-                        <p class="desc">
-                            Project 1에서 제가 ~를 했습니다.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="images/project.jpg" alt="Project Image 2">
-                    </div>
-                    <div class="project-info">
-                        <h4>Project 2 제목</h4>
-                        <p class="date">2022.01 - 2022.02</p>
-                        <p class="desc">
-                            Project 2에서 제가 ~를 했습니다.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="images/project.jpg" alt="Project Image 3">
-                    </div>
-                    <div class="project-info">
-                        <h4>Project 3 제목</h4>
-                        <p class="date">2023.01 - 2023.02</p>
-                        <p class="desc">
-                            Project 3에서 제가 ~를 했습니다.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
+<!-- Projects Section -->
+<section class="section" id="project">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">// projects</span>
+      <h2 class="section-title">프로젝트</h2>
     </div>
 
-    <div class="footer">
-        <div class="container">
-            <p>Contact: song.dela.moon@gmail.com</p>
-            <p>Github: github.com/song-dela-moon</p>
-        </div>
+    <div class="posts-grid" style="display: flex; flex-direction: column; gap: 20px;">
+      {% assign featured_projects = site.data.projects | where: "featured", true %}
+      {% for project in featured_projects %}
+      {% include project-card.html %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Recent Posts Section -->
+<section class="section" id="recent-posts">
+  <div class="container">
+    <div class="section-header" style="display:flex;justify-content:space-between;align-items:flex-end">
+      <div>
+        <span class="section-label">// blog</span>
+        <h2 class="section-title">기술 블로그</h2>
+      </div>
+      <a href="{{ '/blog/' | relative_url }}" class="btn btn-outline" style="font-size:0.85rem;padding:8px 16px">모두 보기
+        →</a>
     </div>
 
-</body>
-
-</html>
+    {% if site.posts.size > 0 %}
+    <div class="posts-grid" style="display: flex; flex-direction: column; gap: 20px;">
+      {% for post in site.posts limit:3 %}
+      {% include post-card.html %}
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="no-posts">
+      <h3>아직 작성된 포스트가 없습니다.</h3>
+      <p>새로운 소식으로 곧 찾아뵙겠습니다!</p>
+    </div>
+    {% endif %}
+  </div>
+</section>

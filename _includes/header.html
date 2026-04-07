@@ -1,0 +1,30 @@
+<header class="site-header" id="site-header">
+  <div class="container header-inner">
+    <a href="{{ '/' | relative_url }}" class="site-logo" aria-label="Home">
+      <span class="logo-bracket">[</span>
+      <span class="logo-text">song-dela-moon</span>
+      <span class="logo-bracket">]</span>
+      <span class="logo-cursor">_</span>
+    </a>
+
+    <div class="header-actions">
+      <nav class="site-nav" id="site-nav" aria-label="Main Navigation">
+        <a href="{{ '/' | relative_url }}" class="nav-link {% if page.url == '/' %}active{% endif %}">Home</a>
+        <a href="{{ '/#exp' | relative_url }}" class="nav-link">Experience</a>
+        <a href="{{ '/#project' | relative_url }}" class="nav-link">Projects</a>
+        <a href="{{ '/blog/' | relative_url }}" class="nav-link {% if page.url contains '/blog' %}active{% endif %}">Blog</a>
+      </nav>
+
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+        <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="site-nav">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,89 @@
+# ==========================================
+# Site Settings
+# ==========================================
+title: "JunKyu Song"
+description: "System Programmer | Rust, Linux, Kubernetes"
+author: "JunKyu Song"
+email: "song.dela.moon@gmail.com"
+url: "https://song-dela-moon.github.io"
+baseurl: ""
+
+# Social
+github_username: song-dela-moon
+
+# ==========================================
+# Build Settings
+# ==========================================
+theme: null
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+
+# ==========================================
+# Plugins (GitHub Pages whitelisted)
+# ==========================================
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# ==========================================
+# Collections & Defaults
+# ==========================================
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "JunKyu Song"
+
+# ==========================================
+# Permalink
+# ==========================================
+permalink: /blog/:year/:month/:day/:title/
+
+# ==========================================
+# Pagination
+# ==========================================
+paginate: 10
+paginate_path: "/blog/page/:num/"
+
+# ==========================================
+# Exclude from build
+# ==========================================
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .bundle
+  - .jekyll-cache
+  - README.md
+
+# ==========================================
+# Category / Tag Pages
+# ==========================================
+category_archive:
+  type: liquid
+  path: /blog/category/
+
+# ==========================================
+# SEO & Analytics
+# ==========================================
+google_analytics: ""  # UA-XXXXXXXXX-X 형태로 입력
+
+# ==========================================
+# Comments (Utterances)
+# ==========================================
+utterances:
+  repo: "song-dela-moon/song-dela-moon.github.io"
+  issue_term: "pathname"
+  theme: "photon-dark"
+  label: "comment"

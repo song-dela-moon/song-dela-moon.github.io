@@ -1,0 +1,23 @@
+languages:
+  - name: "Rust"
+    level: 90
+  - name: "C/C++"
+    level: 88
+  - name: "Python"
+    level: 70
+
+systems:
+  - name: "Linux"
+    level: 92
+  - name: "Docker"
+    level: 85
+  - name: "Kubernetes"
+    level: 80
+
+specialties:
+  - "System Programming"
+  - "Embedded Systems"
+  - "OS Development"
+  - "Security (TPM, Encryption)"
+  - "OTA Updates"
+  - "Reactive Systems"

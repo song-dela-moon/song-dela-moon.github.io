@@ -1,0 +1,82 @@
+---
+layout: default
+title: "Blog - JunKyu Song"
+---
+
+<div class="blog-hero">
+  <div class="container text-center">
+    <span class="section-label" style="text-align: center;">// blog</span>
+    <h1 class="blog-hero-title">기술 블로그</h1>
+    <p class="blog-hero-desc">시스템 프로그래밍 · Rust · Linux · Kubernetes · 그리고 개발 이야기</p>
+  </div>
+</div>
+
+<div class="blog-layout">
+  <div class="container container-narrow">
+    <!-- Category & Tag Filters (Moved from Sidebar) -->
+    <div class="blog-filters">
+      <div class="filter-group">
+        <span class="filter-label">Categories:</span>
+        <div class="filter-chips">
+          <button class="filter-chip active" data-filter="all">All</button>
+          {% assign categories = site.categories | sort %}
+          {% for category in categories %}
+          <button class="filter-chip" data-filter="{{ category[0] | slugify }}">{{ category[0] }} <span class="count">({{ category[1].size }})</span></button>
+          {% endfor %}
+        </div>
+      </div>
+      
+      <div class="filter-group" style="margin-top: 12px;">
+        <span class="filter-label">Tags:</span>
+        <div class="filter-chips">
+          {% assign tags = site.tags | sort %}
+          {% for tag in tags %}
+          <span class="tag-chip">#{{ tag[0] }}</span>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="post-list-wrapper">
+      {% if site.posts.size > 0 %}
+      <div class="posts-grid">
+        {% for post in site.posts %}
+        <div class="post-card-wrapper" data-categories="{{ post.categories | join: ',' | slugify }}">
+          {% include post-card.html %}
+        </div>
+        {% endfor %}
+      </div>
+      {% else %}
+      <div class="no-posts">
+        <h3>아직 작성된 포스트가 없습니다.</h3>
+        <p>새로운 소식으로 곧 찾아뵙겠습니다!</p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+.container-narrow { max-width: 800px; margin: 0 auto; }
+.text-center { text-align: center; }
+.blog-hero { padding: 80px 0 60px; } /* Increased top padding to fix cramped feeling */
+.blog-filters {
+  margin-bottom: 48px;
+  padding: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+.filter-group { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.filter-label { font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: var(--text-muted); min-width: 80px; }
+.filter-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.filter-chip {
+  font-size: 0.8rem; font-weight: 600; padding: 4px 12px; border-radius: 20px;
+  background: var(--bg-base); border: 1px solid var(--border); color: var(--text-secondary);
+  transition: all var(--transition);
+}
+.filter-chip:hover, .filter-chip.active { background: var(--primary); color: white; border-color: var(--primary); }
+.filter-chip .count { font-size: 0.7rem; opacity: 0.7; margin-left: 2px; }
+.tag-chip { font-size: 0.75rem; color: var(--text-muted); }
+.blog-layout { padding-bottom: 100px; }
+</style>

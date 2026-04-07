@@ -1,0 +1,33 @@
+- company: "Bear Robotics"
+  role: "System Programmer Intern"
+  period: "2024.09 - 2025.08"
+  highlights:
+    - title: "Memory 최적화"
+      desc: "zRAM을 적용하여 로봇 최대 주행 가능 맵 크기를 4배 넓혔습니다."
+      link: "https://github.com/song-dela-moon/Simple-zRAM"
+    - title: "Pipewire 도입"
+      desc: "ALSA 기반 1:1 재생 환경에서 다중 재생이 되도록 구현했습니다."
+      link: "https://github.com/song-dela-moon/Linux-Audio-System"
+    - title: "SSD 암호화"
+      desc: "Rust와 TPM을 사용하여 SSD 암호화 기능을 기존 대비 3배 빠르게 구현했습니다."
+      link: "https://github.com/song-dela-moon/Rust-TPM"
+    - title: "OS OTA update"
+      desc: "OSTree와 Overlay FS를 이용해 OTA OS 버전 관리를 지원했습니다."
+
+- company: "Lawdians"
+  role: "Infrastructure Engineer Intern"
+  period: "2021.08 - 2021.12"
+  highlights:
+    - title: "Infra 관리"
+      desc: "Kubernetes, Docker, Jenkins를 활용한 Pipeline 운영 및 구축을 맡았습니다."
+    - title: "ISMS-P 심사 지원"
+      desc: "Docker 및 Linux 환경 세팅을 통해 setting으로 인한 취약점을 보완했습니다."
+
+- company: "선린인터넷고등학교"
+  role: "Contract Teacher"
+  period: "2020.08 - 2023.08"
+  highlights:
+    - title: "강의 진행"
+      desc: "6번의 방학동안 Packet tracer와 GNS를 활용한 인프라 구축 강의를 진행했습니다."
+    - title: "대회 출제"
+      desc: "네트워크 구축 대회 및 서버 구축 대회 문제를 출제했습니다."

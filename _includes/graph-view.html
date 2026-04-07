@@ -1,0 +1,134 @@
+<div id="graph-container" class="graph-wrapper"></div>
+
+<!-- Load Force-Graph Library -->
+<script src="https://unpkg.com/force-graph"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const container = document.getElementById('graph-container');
+  if (!container) return;
+
+  // 0. Root Node
+  const rootNode = { id: 'Me', label: 'song-dela-moon', size: 24, color: 'var(--primary)', isRoot: true, isMainRoot: true };
+
+  // 1. Data Definition
+  const categories = [
+    { id: 'System', label: 'System', size: 16, color: 'var(--primary)', isRoot: true },
+    { id: 'Security', label: 'Security', size: 16, color: '#ec4899', isRoot: true },
+    { id: 'Embedded', label: 'Embedded Systems', size: 16, color: '#10b981', isRoot: true },
+    { id: 'Backend', label: 'Backend', size: 16, color: '#f59e0b', isRoot: true },
+    { id: 'AI', label: 'AI', size: 16, color: '#8b5cf6', isRoot: true }
+  ];
+
+  const projects = [
+    {% for project in site.data.projects %}
+    { 
+      id: '{{ project.title }}', 
+      label: '{{ project.title }}', 
+      url: '{{ project.github }}',
+      size: 8, 
+      color: 'var(--text-muted)', 
+      isRoot: false 
+    },
+    {% endfor %}
+  ];
+
+  // Precise Manual Mapping
+  const links = [
+    // Root to Categories
+    { source: 'Me', target: 'System' },
+    { source: 'Me', target: 'Security' },
+    { source: 'Me', target: 'Embedded' },
+    { source: 'Me', target: 'Backend' },
+    { source: 'Me', target: 'AI' },
+
+    // AI
+    { source: '2023_Fall_ML', target: 'AI' },
+    { source: '2024_Spring_ANN', target: 'AI' },
+    // Backend
+    { source: 'Robot-RT-Monitoring-Dashboard', target: 'Backend' },
+    { source: 'woori-payflow', target: 'Backend' },
+    // Security
+    { source: 'Rust-TPM', target: 'Security' },
+    // Embedded
+    { source: 'KosmOS', target: 'Embedded' },
+    { source: 'PNG_Compressor', target: 'Embedded' },
+    // System (나머지)
+    { source: 'Simple-zRAM', target: 'System' },
+    { source: 'Linux-Audio-System', target: 'System' },
+    { source: 'C_Compiler_Front', target: 'System' }
+  ];
+
+  const gData = {
+    nodes: [rootNode, ...categories, ...projects],
+    links: links.filter(l => 
+      (l.source === 'Me' || projects.find(p => p.id === l.source)) && 
+      categories.find(c => c.id === l.target)
+    )
+  };
+
+  // 2. Initialize Graph
+  const Graph = ForceGraph()(container)
+    .graphData(gData)
+    .width(container.offsetWidth)
+    .height(container.offsetHeight)
+    .backgroundColor('rgba(0,0,0,0)')
+    .nodeRelSize(1)
+    .nodeCanvasObject((node, ctx, globalScale) => {
+      const label = node.label;
+      const fontSize = node.isRoot ? 16/globalScale : 12/globalScale;
+      ctx.font = `${node.isRoot ? 'bold' : 'normal'} ${fontSize}px "JetBrains Mono", monospace`;
+      
+      // Node Circle
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, node.size / 2, 0, 2 * Math.PI, false);
+      const nodeColor = node.color.startsWith('var') ? 
+        getComputedStyle(document.documentElement).getPropertyValue(node.color.match(/\(([^)]+)\)/)[1]).trim() : 
+        node.color;
+      ctx.fillStyle = nodeColor;
+      ctx.fill();
+
+      // Label
+      ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--text-primary');
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(label, node.x, node.y + (node.size / 2) + 14/globalScale);
+    })
+    .linkColor(() => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      return isDark ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.15)';
+    })
+    .linkWidth(2)
+    .linkDirectionalParticles(4)
+    .linkDirectionalParticleSpeed(0.006)
+    .linkHoverPrecision(10)
+    .onNodeClick(node => {
+      if (node.url) {
+        window.open(node.url, '_blank');
+      } else {
+        // For category nodes, fit him into center
+        Graph.centerAt(node.x, node.y, 1000);
+        Graph.zoom(2, 1000);
+      }
+    })
+    .onLinkHover(link => container.style.cursor = link ? 'pointer' : null)
+    .onLinkClick(link => {
+      // Force-graph link objects have source and target as node objects after engine starts
+      const url = link.source.url || link.target.url;
+      if (url) {
+        window.open(url, '_blank');
+      }
+    })
+    .d3Force('charge', d3.forceManyBody().strength(-200))
+    .d3Force('link', d3.forceLink().id(d => d.id).distance(link => {
+      // Root to Category: 80, Category to Project: 100
+      return link.source.id === 'Me' ? 80 : 100;
+    }))
+    .onEngineStop(() => Graph.zoomToFit(600, 100)); 
+
+  // Handle Resize
+  window.addEventListener('resize', () => {
+    Graph.width(container.offsetWidth).height(container.offsetHeight);
+  });
+});
+</script>

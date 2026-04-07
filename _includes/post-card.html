@@ -1,0 +1,46 @@
+<article class="post-card" id="post-{{ post.slug }}">
+  <a href="{{ post.url | relative_url }}" class="post-card-link" aria-label="{{ post.title }}">
+    {% if post.thumbnail %}
+    <div class="post-card-image">
+      <img src="{{ post.thumbnail }}" alt="{{ post.title }}" loading="lazy">
+    </div>
+    {% else %}
+    <div class="post-card-image post-card-image-placeholder">
+      <div class="placeholder-icon">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+        </svg>
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="post-card-body">
+      {% if post.categories %}
+      <div class="post-card-categories">
+        {% for category in post.categories limit:2 %}
+        <span class="category-badge">{{ category }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <h2 class="post-card-title">{{ post.title }}</h2>
+
+      {% if post.excerpt %}
+      <p class="post-card-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+      {% endif %}
+
+      <div class="post-card-meta">
+        <time datetime="{{ post.date | date_to_xmlschema }}">
+          {{ post.date | date: "%Y.%m.%d" }}
+        </time>
+        {% if post.tags %}
+        <div class="post-card-tags">
+          {% for tag in post.tags limit:3 %}
+          <span class="tag">#{{ tag }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </a>
+</article>
