@@ -1,4 +1,10 @@
-<div id="graph-container" class="graph-wrapper"></div>
+<div class="graph-wrapper">
+  <div id="graph-container"></div>
+  <div class="graph-notice">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+    <span>Edge를 클릭해 프로젝트를 확인해보세요!</span>
+  </div>
+</div>
 
 <!-- Load Force-Graph Library -->
 <script src="https://unpkg.com/force-graph"></script>
@@ -124,11 +130,14 @@ document.addEventListener('DOMContentLoaded', function() {
       // Root to Category: 80, Category to Project: 100
       return link.source.id === 'Me' ? 80 : 100;
     }))
-    .onEngineStop(() => Graph.zoomToFit(600, 100)); 
+    .onEngineStop(() => {
+      Graph.zoomToFit(400, 50);
+    }); 
 
-  // Handle Resize
-  window.addEventListener('resize', () => {
+  const resizeObserver = new ResizeObserver(() => {
     Graph.width(container.offsetWidth).height(container.offsetHeight);
+    Graph.zoomToFit(400, 50);
   });
+  resizeObserver.observe(container);
 });
 </script>

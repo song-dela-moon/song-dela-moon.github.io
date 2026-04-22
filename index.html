@@ -100,46 +100,4 @@ description: "Rust, Linux, Kubernetes 전문 시스템 프로그래머 송준규
   </div>
 </section>
 
-<!-- Projects Section -->
-<section class="section" id="project">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-label">// projects</span>
-      <h2 class="section-title">프로젝트</h2>
-    </div>
 
-    <div class="posts-grid" style="display: flex; flex-direction: column; gap: 20px;">
-      {% assign featured_projects = site.data.projects | where: "featured", true %}
-      {% for project in featured_projects %}
-      {% include project-card.html %}
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-<!-- Recent Posts Section -->
-<section class="section" id="recent-posts">
-  <div class="container">
-    <div class="section-header" style="display:flex;justify-content:space-between;align-items:flex-end">
-      <div>
-        <span class="section-label">// blog</span>
-        <h2 class="section-title">기술 블로그</h2>
-      </div>
-      <a href="{{ '/blog/' | relative_url }}" class="btn btn-outline" style="font-size:0.85rem;padding:8px 16px">모두 보기
-        →</a>
-    </div>
-
-    {% if site.posts.size > 0 %}
-    <div class="posts-grid" style="display: flex; flex-direction: column; gap: 20px;">
-      {% for post in site.posts limit:3 %}
-      {% include post-card.html %}
-      {% endfor %}
-    </div>
-    {% else %}
-    <div class="no-posts">
-      <h3>아직 작성된 포스트가 없습니다.</h3>
-      <p>새로운 소식으로 곧 찾아뵙겠습니다!</p>
-    </div>
-    {% endif %}
-  </div>
-</section>
